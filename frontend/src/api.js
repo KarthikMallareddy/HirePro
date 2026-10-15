@@ -6,8 +6,16 @@
 import axios from "axios";
 
 // Base URL — uses environment variable in production, localhost in development
+let rawURL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+
+// Auto-normalize: ensure URL always points to the /api endpoint
+let cleanURL = rawURL.trim().replace(/\/+$/, "");
+if (!cleanURL.endsWith("/api")) {
+  cleanURL = cleanURL + "/api";
+}
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
+  baseURL: cleanURL,
 });
 
 // ── Interceptor: attach JWT token to every request ──
