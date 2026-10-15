@@ -1,0 +1,341 @@
+/* ══════════════════════════════════════════════════
+   ApplicationCard.css — Elevated Card Layout
+   Features: Color-coded left accents, Auto logo, 
+   Subway map stepper, and Days Ago badge
+══════════════════════════════════════════════════ */
+
+.job-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 5px solid transparent;
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, opacity 0.18s ease;
+  position: relative;
+  box-shadow: var(--shadow-xs);
+}
+
+.job-card:hover {
+  box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.08);
+  border-color: var(--border-dark);
+}
+
+/* ── 3. Color-Coded Accents & Ambient Tint ─────── */
+.border-applied {
+  border-left: 6px solid #2563EB;
+  border-color: #BFDBFE #BFDBFE #BFDBFE #2563EB;
+  background: linear-gradient(110deg, #F0F7FF 0%, #FAFCFF 30%, #FFFFFF 100%);
+}
+.border-applied:hover {
+  box-shadow: 0 10px 24px -4px rgba(37, 99, 235, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.border-interview {
+  border-left: 6px solid #D97706;
+  border-color: #FDE68A #FDE68A #FDE68A #D97706;
+  background: linear-gradient(110deg, #FFFDF5 0%, #FFFDF8 30%, #FFFFFF 100%);
+}
+.border-interview:hover {
+  box-shadow: 0 10px 24px -4px rgba(217, 119, 6, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.border-offer {
+  border-left: 6px solid #059669;
+  border-color: #A7F3D0 #A7F3D0 #A7F3D0 #059669;
+  background: linear-gradient(110deg, #F0FDF4 0%, #F7FEFA 30%, #FFFFFF 100%);
+}
+.border-offer:hover {
+  box-shadow: 0 10px 24px -4px rgba(5, 150, 105, 0.14), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.border-rejected {
+  border-left: 6px solid #DC2626;
+  border-color: #FECACA #FECACA #FECACA #DC2626;
+  background: linear-gradient(110deg, #FFF5F5 0%, #FFFAFA 30%, #FFFFFF 100%);
+  opacity: 0.88;
+}
+.border-rejected:hover {
+  opacity: 1;
+  box-shadow: 0 10px 24px -4px rgba(220, 38, 38, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* Status Pill in Card Header */
+.status-pill {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.status-pill--applied {
+  background: #DBEAFE;
+  color: #1D4ED8;
+  border: 1px solid #BFDBFE;
+}
+
+.status-pill--interview {
+  background: #FEF3C7;
+  color: #B45309;
+  border: 1px solid #FDE68A;
+}
+
+.status-pill--offer {
+  background: #D1FAE5;
+  color: #047857;
+  border: 1px solid #A7F3D0;
+}
+
+.status-pill--rejected {
+  background: #FEE2E2;
+  color: #B91C1C;
+  border: 1px solid #FECACA;
+}
+
+/* ── 1. Company Header with Auto-Fetched Logo ──── */
+.card-top-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.company-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+  flex: 1;
+}
+
+.company-logo-wrapper {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+
+.company-logo {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #FFFFFF;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.company-logo-fallback {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: var(--indigo);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.company-info {
+  min-width: 0;
+}
+
+.company-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.company-role {
+  font-size: 0.85rem;
+  color: var(--text-2);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Top Right Actions */
+.card-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* ── 4. Dynamic "Days Ago" & Meta Chips ────────── */
+.meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.time-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: #F1F5F9;
+  color: #475569;
+  border: 1px solid #E2E8F0;
+}
+
+.salary-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: #F8FAFC;
+  color: #1E293B;
+  border: 1px solid var(--border);
+}
+
+.view-job-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 4px;
+  background: #EEF2FF;
+  color: var(--indigo);
+  text-decoration: none;
+  border: 1px solid #C7D2FE;
+  transition: all 0.15s;
+}
+.view-job-btn:hover {
+  background: var(--indigo);
+  color: #FFFFFF;
+}
+
+.notes-snippet {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  background: #F8FAFC;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border-left: 3px solid #CBD5E1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── 2. "Subway Map" Progress Stepper ──────────── */
+.card-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #F1F5F9;
+  flex-wrap: wrap;
+}
+
+.status-stepper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.step {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1.5px solid #E2E8F0;
+  background: #F8FAFC;
+  color: #64748B;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-family: var(--font);
+}
+
+.step:hover {
+  border-color: #94A3B8;
+  color: #1E293B;
+  transform: scale(1.02);
+}
+
+.step-line {
+  width: 14px;
+  height: 2px;
+  background: #CBD5E1;
+  border-radius: 1px;
+}
+
+/* Stepper Active Highlight States */
+.step--active-applied {
+  background: #EFF6FF;
+  border-color: #3B82F6;
+  color: #1D4ED8;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.step--active-interview {
+  background: #FFFBEB;
+  border-color: #F59E0B;
+  color: #B45309;
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
+}
+
+.step--active-offer {
+  background: #ECFDF5;
+  border-color: #10B981;
+  color: #047857;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+}
+
+.step--active-rejected {
+  background: #FEF2F2;
+  border-color: #EF4444;
+  color: #B91C1C;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+}
+
+/* Icon Buttons (Edit, Delete) */
+.btn-icon {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  color: var(--text-3);
+  transition: all 0.15s;
+}
+.btn-icon:hover {
+  background: #F1F5F9;
+  border-color: #94A3B8;
+  color: var(--text-1);
+}
+.btn-icon--danger:hover {
+  background: #FEF2F2;
+  border-color: #EF4444;
+  color: #EF4444;
+}

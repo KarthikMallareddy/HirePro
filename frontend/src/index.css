@@ -1,0 +1,75 @@
+/* ══════════════════════════════════════════════════
+   HirePro — Design System v2
+   Sharp, modular, productivity-focused
+══════════════════════════════════════════════════ */
+
+:root {
+  /* ── Brand ─────────────────────────────────────── */
+  --indigo:       #6366F1;
+  --indigo-dark:  #4338CA;
+  --indigo-dim:   rgba(99,102,241,.12);
+
+  /* ── Status colours ────────────────────────────── */
+  --c-applied:    #3B82F6;   /* blue */
+  --c-interview:  #F59E0B;   /* amber */
+  --c-offer:      #10B981;   /* emerald */
+  --c-rejected:   #EF4444;   /* red */
+
+  /* ── Sidebar ───────────────────────────────────── */
+  --sidebar-w:    240px;
+  --sidebar-bg:   #0F172A;
+  --sidebar-text: #94A3B8;
+  --sidebar-hi:   #F1F5F9;
+
+  /* ── Surface / page ────────────────────────────── */
+  --page-bg:      #F1F5F9;
+  --card-bg:      #FFFFFF;
+  --border:       #E2E8F0;
+  --border-dark:  #CBD5E1;
+
+  /* ── Text ──────────────────────────────────────── */
+  --text-1:  #0F172A;
+  --text-2:  #475569;
+  --text-3:  #94A3B8;
+
+  /* ── Geometry ──────────────────────────────────── */
+  --radius:    6px;
+  --radius-lg: 10px;
+
+  /* ── Elevation ─────────────────────────────────── */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,.06);
+  --shadow-sm: 0 1px 4px rgba(0,0,0,.08), 0 0 0 1px rgba(0,0,0,.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+
+  --font: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ── Reset ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background:  var(--page-bg);
+  color:       var(--text-1);
+  min-height:  100vh;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── App shell: sidebar + main ──────────────────── */
+.shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.shell__main {
+  flex: 1;
+  margin-left: var(--sidebar-w);
+  min-width: 0;
+}
+
+/* ── Scrollbar ──────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-dark); border-radius: 99px; }

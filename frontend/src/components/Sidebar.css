@@ -1,0 +1,210 @@
+/* ══════════════════════════════════════════════════
+   Sidebar.css
+══════════════════════════════════════════════════ */
+
+.sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--sidebar-bg);
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  border-right: 1px solid rgba(255,255,255,.04);
+}
+
+/* ── Brand ──────────────────────────────────────── */
+.sidebar__brand {
+  padding: 1.5rem 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar__logo-mark {
+  width: 34px; height: 34px;
+  background: var(--indigo);
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900;
+  font-size: 1rem;
+  color: #fff;
+  letter-spacing: -1px;
+  flex-shrink: 0;
+}
+
+.sidebar__logo-name {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #F8FAFC;
+  letter-spacing: -0.03em;
+}
+.sidebar__logo-name span { color: var(--indigo); }
+
+.sidebar__tagline {
+  font-size: 0.68rem;
+  color: var(--sidebar-text);
+  margin-top: 2px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Nav section label ──────────────────────────── */
+.sidebar__section-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #334155;
+  padding: 1.25rem 1.25rem 0.4rem;
+}
+
+/* ── Stat pills ─────────────────────────────────── */
+.sidebar__stats {
+  padding: 0 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar__stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7px 10px;
+  border-radius: var(--radius);
+  cursor: default;
+  transition: background 0.15s;
+}
+.sidebar__stat:hover { background: rgba(255,255,255,.04); }
+
+.sidebar__stat-left {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.83rem;
+  color: var(--sidebar-text);
+  font-weight: 500;
+}
+
+.sidebar__stat-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sidebar__stat-count {
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: #64748B;
+  background: rgba(255,255,255,.05);
+  padding: 1px 7px;
+  border-radius: 4px;
+}
+
+/* Dot colours */
+.dot--total    { background: var(--indigo); }
+.dot--applied  { background: var(--c-applied); }
+.dot--interview{ background: var(--c-interview); }
+.dot--offer    { background: var(--c-offer); }
+.dot--rejected { background: var(--c-rejected); }
+
+/* ── User Profile & Footer ────────────────────────── */
+.sidebar__user {
+  margin-top: auto;
+  padding: 1rem 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar__user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--indigo);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sidebar__user-details {
+  min-width: 0;
+  flex: 1;
+}
+
+.sidebar__user-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #F8FAFC;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar__user-email {
+  font-size: 0.7rem;
+  color: var(--sidebar-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar__logout-btn {
+  width: 100%;
+  padding: 5px 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  color: #94A3B8;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s;
+  font-family: var(--font);
+}
+
+.sidebar__logout-btn:hover {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: var(--c-rejected);
+  color: var(--c-rejected);
+}
+
+.sidebar__footer {
+  padding: 0.6rem 1.1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.68rem;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sidebar__footer-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-offer);
+  flex-shrink: 0;
+}

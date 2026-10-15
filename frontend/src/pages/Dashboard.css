@@ -1,0 +1,200 @@
+/* ══════════════════════════════════════════════════
+   Dashboard.css — Elevated Main Workspace
+══════════════════════════════════════════════════ */
+
+/* ── Top bar ────────────────────────────────────── */
+.topbar {
+  height: 58px;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.75rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.topbar__left {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.topbar__title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: -0.02em;
+}
+
+.topbar__sub {
+  font-size: 0.72rem;
+  color: var(--text-3);
+}
+
+/* Add button */
+.btn--add {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: var(--indigo);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: -0.01em;
+  font-family: var(--font);
+  transition: background 0.15s, transform 0.1s;
+}
+.btn--add:hover { background: var(--indigo-dark); }
+.btn--add:active { transform: scale(0.98); }
+
+/* ── Page content ───────────────────────────────── */
+.dashboard {
+  padding: 1.5rem 1.75rem;
+}
+
+/* ── Toolbar ────────────────────────────────────── */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.25rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  box-shadow: var(--shadow-xs);
+}
+
+/* Status filter chips */
+.chip-group {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.chip {
+  padding: 4px 11px;
+  border-radius: 4px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  background: var(--page-bg);
+  color: var(--text-2);
+  transition: all 0.12s;
+  letter-spacing: 0.01em;
+}
+.chip:hover { border-color: var(--border-dark); color: var(--text-1); }
+
+/* Active chip styles per status */
+.chip--active-all      { background: var(--indigo-dim); color: var(--indigo); border-color: var(--indigo); }
+.chip--active-Applied  { background: #EFF6FF; color: var(--c-applied); border-color: var(--c-applied); }
+.chip--active-Interview{ background: #FFFBEB; color: var(--c-interview); border-color: var(--c-interview); }
+.chip--active-Offer    { background: #ECFDF5; color: var(--c-offer); border-color: var(--c-offer); }
+.chip--active-Rejected { background: #FEF2F2; color: var(--c-rejected); border-color: var(--c-rejected); }
+
+/* Divider between chip group and search */
+.toolbar__divider {
+  width: 1px;
+  height: 22px;
+  background: var(--border);
+  flex-shrink: 0;
+  margin: 0 4px;
+}
+
+/* Search input */
+.toolbar__search {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.83rem;
+  color: var(--text-1);
+  background: transparent;
+  font-family: var(--font);
+  min-width: 120px;
+}
+.toolbar__search::placeholder { color: var(--text-3); }
+
+/* Sort select */
+.toolbar__sort {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  background: var(--page-bg);
+  color: var(--text-2);
+  font-family: var(--font);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.toolbar__sort:focus { outline: none; border-color: var(--indigo); }
+
+/* ── Result count label ─────────────────────────── */
+.result-label {
+  font-size: 0.74rem;
+  color: var(--text-3);
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  padding-left: 2px;
+}
+
+/* ── Applications list ──────────────────────────── */
+.apps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Empty state ────────────────────────────────── */
+.empty-state {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background: var(--card-bg);
+  border: 1.5px dashed var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--text-2);
+  margin-top: 0.5rem;
+}
+
+.empty-state p {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-2);
+  margin: 0;
+}
+
+/* ── Loading ────────────────────────────────────── */
+.loading-bar {
+  height: 2px;
+  background: linear-gradient(90deg, var(--indigo) 0%, transparent 100%);
+  border-radius: 1px;
+  animation: slide 1s ease-in-out infinite;
+  margin-bottom: 1.5rem;
+}
+@keyframes slide {
+  0%   { transform: scaleX(0); transform-origin: left; }
+  50%  { transform: scaleX(1); transform-origin: left; }
+  51%  { transform: scaleX(1); transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+
+/* ── Alert banners ──────────────────────────────── */
+.alert {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.alert--error   { background: #FEF2F2; color: var(--c-rejected); border: 1px solid #FECACA; }
+.alert--success { background: #ECFDF5; color: var(--c-offer);    border: 1px solid #A7F3D0; }
