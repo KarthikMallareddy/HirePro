@@ -6,8 +6,8 @@
 const bcrypt = require("bcryptjs");
 const { MongoClient, ObjectId } = require("mongodb");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017";
-const DB_NAME   = "hirepro_db";
+const MONGO_URL = process.env.MONGO_URL || "mongodb://127.0.0.1:27017";
+const DB_NAME   = process.env.DB_NAME   || "hirepro_db";
 
 // ── 1. Karthik's Application Records ──────────────
 const karthikApplications = [
